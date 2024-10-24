@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 250px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #0e9078;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .status-message {
+            color: red;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Đăng nhập </h2>
+    <!-- Thông báo trạng thái -->
+    <p id="statusMessage" class="status-message"></p>
+    <form id="loginForm" action="/login" method="POST">
+        <label for="username">Số điện thoại hoặc Email:</label>
+        <input type="text" id="username" name="username" placeholder="Nhập số điện thoại hoặc email" required>
+
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+        <p style="color:rgb(41, 184, 143); font-size: small; text-align: center;"> Quên mật khẩu </p>
+
+        <input type="submit" value="Đăng nhập ">
+        <p style="color:rgb(41, 184, 143); font-size: small;  text-align: center; ">Bạn đã có tài khoản? Đăng ký</p>
+    </form>
+</div>
+
+<script>
+    // Bắt sự kiện submit của form
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn form gửi dữ liệu để kiểm tra trước
+
+        var identifier = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var statusMessage = document.getElementById('statusMessage');
+
+        // Kiểm tra đầu vào
+        if (!identifier || !password) {
+            statusMessage.innerText = "Vui lòng nhập đầy đủ thông tin.";
+            statusMessage.style.display = 'block'; // Hiển thị thông báo
+            return;
+        }
+
+        // Nếu dữ liệu hợp lệ, tiếp tục gửi form (có thể sử dụng AJAX ở đây)
+        this.submit();
+    });
+</script>
+
+</body>
+</html>
+
+
